@@ -1,6 +1,6 @@
 import unittest
 import requests
-from dat import Helper
+from dat.helpers import PandasWrapper
 import os
 
 
@@ -14,17 +14,17 @@ class DatHelperCase(unittest.TestCase):
         pass
 
     def test_connect(self):
-        helper = Helper(self.token)
+        helper = PandasWrapper(self.token)
         self.assertTrue('.TCAUTH' in helper.session.cookies.get_dict())
 
     def test_search_locations(self):
-        helper = Helper(self.token)
+        helper = PandasWrapper(self.token)
         location = 'Cherry Hill, NJ, 08002'
         location_data = helper.search_locations(location)
         self.assertTrue('handle' in location_data[0])
 
     def test_search_historicals(self):
-        helper = Helper(self.token)
+        helper = PandasWrapper(self.token)
         origin = 'Cherry Hill, NJ, 08002'
         dest = 'Philadelphia, PA, 19106'
         origin_id = helper.search_locations(origin)[0]['handle']
@@ -33,15 +33,17 @@ class DatHelperCase(unittest.TestCase):
         self.assertTrue('result' in historical_data)
 
     def test_historicals_json_to_df(self):
-        helper = Helper(self.token)
+        helper = PandasWrapper(self.token)
         origin = 'Cherry Hill, NJ, 08002'
         dest = 'Philadelphia, PA, 19106'
-        historical_json = helper.search(origin, dest)
+        origin_id = helper.search_locations(origin)[0]['handle']
+        dest_id = helper.search_locations(dest)[0]['handle']
+        historical_json = helper.search_historicals(origin_id, dest_id)
         df = helper.historicals_json_to_df(historical_json)
         self.assertTrue(not df.empty)
 
     def test_search(self):
-        helper = Helper(self.token)
+        helper = PandasWrapper(self.token)
         origin = 'Cherry Hill, NJ, 08002'
         dest = 'Philadelphia, PA, 19106'
         df = helper.search(origin, dest)

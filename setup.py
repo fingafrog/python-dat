@@ -1,4 +1,4 @@
-
+from dat import __version__
 from setuptools import setup
 
 long_description = ''
@@ -6,7 +6,7 @@ with open('./README.md') as f:
     long_description = f.read()
 
 setup(name='dat',
-    version='0.1',
+    version=__version__,
     description='Python package for Dat Rateview http session manipulation.',
     long_description=long_description,
     long_description_content_type="text/markdown",
