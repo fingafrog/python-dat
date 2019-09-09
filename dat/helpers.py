@@ -2,22 +2,6 @@ import pandas as pd
 from .dat import Session
 
 class PandasWrapper(Session):
-    def search_locations(self, search_str):
-        """Return json for search_str ('city, state, zip') to get location id
-        using Dat to find best match."""
-        payload = {'term': search_str}
-        return self.session.post(self.locations_url, json=payload).json()
-
-    def search_historicals(self, origin_id, dest_id, equipment='Dry'):
-        payload = {
-            'rateMarket': self.rate_market,
-            'rateType': self.rate_type,
-            'equipmentCategory': equipment,
-            'originHandle': origin_id,
-            'destinationHandle': dest_id
-           }
-        return self.session.post(self.historicals_url, json=payload).json()
-
     @staticmethod
     def historicals_json_to_df(json):
         columns = ['origin_geography', 'destination_geography', 'miles',
