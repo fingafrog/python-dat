@@ -17,37 +17,28 @@ class DatHelperCase(unittest.TestCase):
         helper = PandasWrapper(self.token)
         self.assertTrue('.TCAUTH' in helper.session.cookies.get_dict())
 
-    def test_search_locations(self):
-        helper = PandasWrapper(self.token)
-        location = 'Cherry Hill, NJ, 08002'
-        location_data = helper.search_locations(location)
-        self.assertTrue('handle' in location_data[0])
+    def test_helper_components(self):
 
-    def test_search_historicals(self):
+        # basic Dat location handle search
         helper = PandasWrapper(self.token)
         origin = 'Cherry Hill, NJ, 08002'
-        dest = 'Philadelphia, PA, 19106'
-        origin_id = helper.search_locations(origin)[0]['handle']
-        dest_id = helper.search_locations(dest)[0]['handle']
-        historical_data = helper.search_historicals(origin_id, dest_id)
-        self.assertTrue('result' in historical_data)
+        origin_data = helper.search_locations(origin)
+        self.assertTrue('handle' in origin_data[0])
 
-    def test_historicals_json_to_df(self):
-        helper = PandasWrapper(self.token)
-        origin = 'Cherry Hill, NJ, 08002'
+        # basic Dat lane historicals json search
+        origin_id = origin_data[0]['handle']
         dest = 'Philadelphia, PA, 19106'
-        origin_id = helper.search_locations(origin)[0]['handle']
         dest_id = helper.search_locations(dest)[0]['handle']
         historical_json = helper.search_historicals(origin_id, dest_id)
+        self.assertTrue('result' in historical_json)
+
+        # convert Dat lane historicals json to Pandas Dataframe
         df = helper.historicals_json_to_df(historical_json)
         self.assertTrue(not df.empty)
 
-    def test_search(self):
-        helper = PandasWrapper(self.token)
-        origin = 'Cherry Hill, NJ, 08002'
-        dest = 'Philadelphia, PA, 19106'
-        df = helper.search(origin, dest)
-        self.assertTrue(not df.empty)
+        # main usage of Dat package via PandasWrapper
+        search_results = helper.search(origin, dest)
+        self.assertTrue(not search_results.empty)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
