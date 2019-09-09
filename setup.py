@@ -13,6 +13,6 @@ setup(name='dat',
     url='https://github.com/NFI-Solutions-Engineering/dat',
     author='Chris Pryer',
     author_email='chris.pryer@nfiindustries.com',
-    license='PRIVATE',
+    license='PUBLIC',
     packages=['dat'],
     zip_safe=False)
