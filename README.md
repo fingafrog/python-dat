@@ -1,7 +1,7 @@
-[![codebeat badge](https://codebeat.co/badges/69998b54-da96-4a48-ac50-835eac0beeb1)](https://codebeat.co/projects/github-com-christopherpryer-dat-python-master)
+[![codebeat badge](https://codebeat.co/badges/43e00bf6-1385-4596-9082-d77aed95551b)](https://codebeat.co/projects/github-com-christopherpryer-python-dat-master)
 
-# dat-python
-Python package for Dat Rateview http session manipulation.
+# python-dat
+Python package for DAT RateView http session manipulation.
 
 ### Functionality
 - search_locations: get a location handle from dat. This maps to a best-guess

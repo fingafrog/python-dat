@@ -7,12 +7,12 @@ with open('./README.md') as f:
 
 setup(name='dat',
     version=__version__,
-    description='Python package for Dat Rateview http session manipulation.',
+    description='Python package for DAT Rateview http session manipulation.',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/NFI-Solutions-Engineering/dat',
+    url='https://github.com/christopherpryer/python-dat',
     author='Chris Pryer',
-    author_email='chris.pryer@nfiindustries.com',
+    author_email='christophpryer@gmail.com',
     license='PUBLIC',
     packages=['dat'],
     zip_safe=False)
