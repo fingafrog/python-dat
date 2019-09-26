@@ -1,3 +1,5 @@
+[![codebeat badge](https://codebeat.co/badges/69998b54-da96-4a48-ac50-835eac0beeb1)](https://codebeat.co/projects/github-com-christopherpryer-dat-python-master)
+
 # dat-python
 Python package for Dat Rateview http session manipulation.
 
