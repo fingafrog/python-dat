@@ -1,5 +1,7 @@
 [![codebeat badge](https://codebeat.co/badges/43e00bf6-1385-4596-9082-d77aed95551b)](https://codebeat.co/projects/github-com-christopherpryer-python-dat-master)
 
+**WARNING**: Due to DAT's TOS this is no longer reccommended. Please reach out to DAT for any integrations. Webscraping is explicitly listed as contract infringing and potentially illegal. 
+
 # python-dat
 Python package for DAT RateView http session manipulation.
 
